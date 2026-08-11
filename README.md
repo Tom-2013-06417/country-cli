@@ -52,9 +52,13 @@ src/
       transform.js       Maps raw API payloads into a stable app shape
       index.js           Barrel file (re-exports fetch + transform)
   generators/
-    html.js              Builds the HTML report
-    csv.js               Builds the CSV report
     index.js             Barrel file for generators
+    html/
+      template.html      HTML boilerplate with {{STYLES}} / {{TABLE}}
+      styles.css         Report styles (inlined into the output HTML)
+      generate.js        Loads template + CSS, builds the countries table
+      index.js           Barrel file
+    csv.js               Builds the CSV report (TODO)
 ```
 
 Add a new API resource by creating another `[resource]/` folder with the same three files; keep output formatting in `generators/`.
