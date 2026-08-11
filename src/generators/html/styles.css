@@ -63,8 +63,40 @@ h1 {
 
 table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   font-size: 0.95rem;
+}
+
+/* Flag, Name, Capital, Population, Languages, Currencies */
+th:nth-child(1),
+td:nth-child(1) {
+  width: 5.5rem;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 14%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 14%;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  width: 9.5rem;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+  width: 22%;
+}
+
+th:nth-child(6),
+td:nth-child(6) {
+  width: 22%;
 }
 
 th,
@@ -81,6 +113,32 @@ th {
   text-transform: uppercase;
   color: #1f4e79;
   background: #d6e8f7;
+  white-space: nowrap;
+}
+
+th.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+th.sortable:hover {
+  background: #c5dcf0;
+}
+
+/* Reserve arrow space so headers don't wrap/shift when sorting */
+th.sortable::after {
+  content: ' ↑';
+  visibility: hidden;
+}
+
+th.sortable[data-direction='asc']::after {
+  content: ' ↑';
+  visibility: visible;
+}
+
+th.sortable[data-direction='desc']::after {
+  content: ' ↓';
+  visibility: visible;
 }
 
 tbody tr:nth-child(even) {

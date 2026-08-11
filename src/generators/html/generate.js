@@ -15,6 +15,10 @@ function escapeHtml(value) {
     .replaceAll("'", '&#39;');
 }
 
+function escapeAttr(value) {
+  return escapeHtml(value);
+}
+
 // AI-generated
 function buildTable(countries) {
   const rows = countries
@@ -23,17 +27,25 @@ function buildTable(countries) {
         ? `<img class="flag" src="${escapeHtml(country.flag)}" alt="" />`
         : '<span class="flag-placeholder">N/A</span>';
 
-      const capital = country.capital
+      const capital = country.capital ?? 'N/A';
+      const capitalHtml = country.capital
         ? escapeHtml(country.capital)
         : '<span class="empty">N/A</span>';
 
       const languages = formatLanguages(country.languages) || 'N/A';
       const currencies = formatCurrencies(country.currencies) || 'N/A';
 
-      return `<tr>
+      return `<tr
+  data-name="${escapeAttr(country.name)}"
+  data-capital="${escapeAttr(capital)}"
+  data-population="${escapeAttr(String(country.population))}"
+  data-languages="${escapeAttr(languages)}"
+  data-currencies="${escapeAttr(currencies)}"
+  data-flag="${country.flag ? '1' : '0'}"
+>
   <td>${flagCell}</td>
   <td class="country-name">${escapeHtml(country.name)}</td>
-  <td>${capital}</td>
+  <td>${capitalHtml}</td>
   <td class="num">${escapeHtml(country.population.toLocaleString('en-US'))}</td>
   <td>${languages === 'N/A' ? '<span class="empty">N/A</span>' : escapeHtml(languages)}</td>
   <td>${currencies === 'N/A' ? '<span class="empty">N/A</span>' : escapeHtml(currencies)}</td>
@@ -45,12 +57,12 @@ function buildTable(countries) {
 <table id="countries-table">
   <thead>
     <tr>
-      <th>Flag</th>
-      <th>Name</th>
-      <th>Capital</th>
-      <th>Population</th>
-      <th>Languages</th>
-      <th>Currencies</th>
+      <th class="sortable" data-sort="flag" data-type="number" title="Sort by flag">Flag</th>
+      <th class="sortable" data-sort="name" title="Sort by name">Name</th>
+      <th class="sortable" data-sort="capital" title="Sort by capital">Capital</th>
+      <th class="sortable" data-sort="population" data-type="number" title="Sort by population">Population</th>
+      <th class="sortable" data-sort="languages" title="Sort by languages">Languages</th>
+      <th class="sortable" data-sort="currencies" title="Sort by currencies">Currencies</th>
     </tr>
   </thead>
   <tbody>
@@ -71,6 +83,7 @@ export function generateHtml(countries) {
     path.join(__dirname, 'search.js'),
     'utf8',
   );
+  const sortScript = fs.readFileSync(path.join(__dirname, 'sort.js'), 'utf8');
 
   return template
     .replace('{{STYLES}}', styles)
@@ -85,7 +98,7 @@ export function generateHtml(countries) {
       ),
     )
     .replace('{{TABLE}}', buildTable(countries))
-    .replace('{{SEARCH_SCRIPT}}', searchScript);
+    .replace('{{TABLE_SCRIPT}}', `${searchScript}\n${sortScript}`);
 }
 
 // AI-generated
