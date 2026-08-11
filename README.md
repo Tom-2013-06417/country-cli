@@ -110,9 +110,12 @@ src/
     [resource]/           One folder per external API resource
       fetch.js           HTTP calls to that resource (URL, headers, errors)
       transform.js       Maps raw API payloads into a stable app shape
-      index.js           Barrel file (re-exports fetch + transform)
+      index.js           Barrel file
   generators/
     index.js             Barrel file for generators
+    formatters/          Display/string formatting for outputs
+      countryFields.js   Shared language/currency formatting for HTML + CSV
+      index.js           Barrel file
     html/
       template.html      HTML boilerplate with {{STYLES}} / {{TABLE}}
       styles.css         Report styles (inlined into the output HTML)

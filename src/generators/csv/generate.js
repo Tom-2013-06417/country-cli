@@ -1,23 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-
-function formatLanguages(languages) {
-  return Object.values(languages ?? {})
-    .filter(Boolean)
-    .join(', ');
-}
-
-function formatCurrencies(currencies) {
-  return Object.values(currencies ?? {})
-    .map((currency) => {
-      if (!currency?.name) return null;
-      return currency.symbol
-        ? `${currency.name} (${currency.symbol})`
-        : currency.name;
-    })
-    .filter(Boolean)
-    .join(', ');
-}
+import { formatCurrencies, formatLanguages } from '../formatters/index.js';
 
 // AI-generated
 function csvCell(value) {

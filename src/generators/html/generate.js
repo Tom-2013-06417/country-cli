@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { formatCurrencies, formatLanguages } from '../formatters/index.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -12,24 +13,6 @@ function escapeHtml(value) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
-}
-
-// AI-generated
-function formatLanguages(languages) {
-  return Object.values(languages ?? {}).filter(Boolean).join(', ');
-}
-
-// AI-generated
-function formatCurrencies(currencies) {
-  return Object.values(currencies ?? {})
-    .map((currency) => {
-      if (!currency?.name) return null;
-      return currency.symbol
-        ? `${currency.name} (${currency.symbol})`
-        : currency.name;
-    })
-    .filter(Boolean)
-    .join(', ');
 }
 
 // AI-generated
@@ -79,7 +62,10 @@ ${rows}
 
 // AI-generated
 export function generateHtml(countries) {
-  const template = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');
+  const template = fs.readFileSync(
+    path.join(__dirname, 'template.html'),
+    'utf8',
+  );
   const styles = fs.readFileSync(path.join(__dirname, 'styles.css'), 'utf8');
 
   return template
