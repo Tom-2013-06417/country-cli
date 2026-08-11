@@ -70,6 +70,16 @@ export function generateHtml(countries) {
 
   return template
     .replace('{{STYLES}}', styles)
+    // AI-generated
+    .replace(
+      '{{GENERATED_AT}}',
+      escapeHtml(
+        new Date().toLocaleString('en-US', {
+          dateStyle: 'medium',
+          timeStyle: 'long',
+        }),
+      ),
+    )
     .replace('{{TABLE}}', buildTable(countries));
 }
 
