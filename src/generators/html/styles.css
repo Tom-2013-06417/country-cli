@@ -67,7 +67,7 @@ tbody tr:nth-child(odd) {
 }
 
 .flag {
-  width: 40px;
+  width: 32px;
   height: auto;
   display: block;
   border: 1px solid #d7e2ec;
