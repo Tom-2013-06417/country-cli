@@ -1,0 +1,15 @@
+# Even if we don't have any dependencies today, keep the folder for future reference.
+node_modules/
+
+.env
+.env.local
+.env.*.local
+
+*.log
+.DS_Store
+
+.idea/
+.vscode/
+
+# Intentionally ignored. We don't want to commit test output files to the repo since it will vary per person who pull this repo.
+output/*

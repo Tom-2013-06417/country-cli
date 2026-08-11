@@ -1,0 +1,10 @@
+{
+  "name": "primis-practice-exam",
+  "version": "1.0.0",
+  "description": "CLI practice exam (pure Node.js)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "private": true
+}
