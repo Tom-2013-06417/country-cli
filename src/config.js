@@ -1,8 +1,6 @@
-'use strict';
+import path from 'path';
 
-const path = require('path');
-
-function getConfig() {
+export function getConfig() {
   return {
     outputDir: path.resolve(
       process.cwd(),
@@ -10,5 +8,3 @@ function getConfig() {
     ),
   };
 }
-
-module.exports = { getConfig };
