@@ -21,7 +21,7 @@ function buildTable(countries) {
     .map((country) => {
       const flagCell = country.flag
         ? `<img class="flag" src="${escapeHtml(country.flag)}" alt="" />`
-        : '<span class="empty">—</span>';
+        : '<span class="flag-placeholder">N/A</span>';
 
       const capital = country.capital
         ? escapeHtml(country.capital)

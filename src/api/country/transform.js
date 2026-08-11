@@ -30,7 +30,7 @@ export function transformCountry(country) {
         },
       ]),
     ),
-    flag: country.flag?.url_svg ?? country.flag?.url_png ?? null,
+    flag: country.flag?.url_svg || country.flag?.url_png || null,
   };
 }
 

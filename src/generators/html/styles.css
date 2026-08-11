@@ -73,6 +73,19 @@ tbody tr:nth-child(odd) {
   border: 1px solid #d7e2ec;
 }
 
+.flag-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 24px;
+  border: 1px solid #d7e2ec;
+  background: #f3f8fc;
+  color: #5c574f;
+  font-size: 0.55rem;
+  line-height: 1;
+}
+
 .num {
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
