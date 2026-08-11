@@ -12,7 +12,6 @@ export async function run() {
     throw new Error('DEFAULT_MAX_PAGINATION_SIZE must be a positive number');
   }
 
-  // TODO: Create a function to support looped pagination. For now, we're using the default max pagination size.
   const response = await fetchCountries({
     query: { region: 'Europe', limit: maxPaginationSize },
   });

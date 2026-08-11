@@ -25,18 +25,18 @@ function buildTable(countries) {
 
       const capital = country.capital
         ? escapeHtml(country.capital)
-        : '<span class="empty">—</span>';
+        : '<span class="empty">N/A</span>';
 
-      const languages = formatLanguages(country.languages) || '—';
-      const currencies = formatCurrencies(country.currencies) || '—';
+      const languages = formatLanguages(country.languages) || 'N/A';
+      const currencies = formatCurrencies(country.currencies) || 'N/A';
 
       return `<tr>
   <td>${flagCell}</td>
   <td>${escapeHtml(country.name)}</td>
   <td>${capital}</td>
   <td class="num">${escapeHtml(country.population.toLocaleString('en-US'))}</td>
-  <td>${languages === '—' ? '<span class="empty">—</span>' : escapeHtml(languages)}</td>
-  <td>${currencies === '—' ? '<span class="empty">—</span>' : escapeHtml(currencies)}</td>
+  <td>${languages === 'N/A' ? '<span class="empty">N/A</span>' : escapeHtml(languages)}</td>
+  <td>${currencies === 'N/A' ? '<span class="empty">N/A</span>' : escapeHtml(currencies)}</td>
 </tr>`;
     })
     .join('\n');

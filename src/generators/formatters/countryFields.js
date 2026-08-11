@@ -8,5 +8,5 @@ export function formatCurrencies(currencies) {
   const firstCurrency = Object.values(currencies ?? {})[0];
   if (!firstCurrency?.name) return '';
 
-  return `${firstCurrency.name} (${firstCurrency.symbol || '—'})`;
+  return `${firstCurrency.name} (${firstCurrency.symbol || 'N/A'})`;
 }
