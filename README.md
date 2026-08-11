@@ -58,7 +58,9 @@ src/
       styles.css         Report styles (inlined into the output HTML)
       generate.js        Loads template + CSS, builds the countries table
       index.js           Barrel file
-    csv.js               Builds the CSV report (TODO)
+    csv/
+      generate.js        Builds the CSV string and writes countries.csv
+      index.js           Barrel file
 ```
 
 Add a new API resource by creating another `[resource]/` folder with the same three files; keep output formatting in `generators/`.
