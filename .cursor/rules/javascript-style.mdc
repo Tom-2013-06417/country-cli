@@ -1,0 +1,14 @@
+---
+description: Prefer single quotes in JavaScript
+globs: "**/*.{js,mjs,cjs}"
+alwaysApply: false
+---
+
+# JavaScript string quotes
+
+Use **single quotes** for JavaScript strings (`'...'`), not double quotes.
+
+- Prefer: `import x from './foo.js'`
+- Prefer: `const region = 'Europe'`
+- Use double quotes only when the string contains a single quote and escaping would be uglier
+- Do not rewrite existing files solely to flip quote style unless asked; when writing or editing JS, emit single quotes
