@@ -5,13 +5,8 @@ export function formatLanguages(languages) {
 }
 
 export function formatCurrencies(currencies) {
-  return Object.values(currencies ?? {})
-    .map((currency) => {
-      if (!currency?.name) return null;
-      return currency.symbol
-        ? `${currency.name} (${currency.symbol})`
-        : currency.name;
-    })
-    .filter(Boolean)
-    .join(', ');
+  const firstCurrency = Object.values(currencies ?? {})[0];
+  if (!firstCurrency?.name) return '';
+
+  return `${firstCurrency.name} (${firstCurrency.symbol || '—'})`;
 }
