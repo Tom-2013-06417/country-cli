@@ -125,9 +125,10 @@ src/
       countryFields.js   Shared language/currency formatting for HTML + CSV
       index.js           Barrel file
     html/
-      template.html      HTML boilerplate with {{STYLES}} / {{TABLE}}
+      template.html      HTML boilerplate with {{STYLES}} / {{TABLE}} / search UI
       styles.css         Report styles (inlined into the output HTML)
-      generate.js        Loads template + CSS, builds the countries table
+      search.js          Client-side country name filter (inlined)
+      generate.js        Loads template + CSS + search, builds the countries table
       index.js           Barrel file
     csv/
       generate.js        Builds the CSV string and writes countries.csv

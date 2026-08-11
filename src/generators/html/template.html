@@ -17,7 +17,23 @@
         <!-- AI-generated -->
         Report generated at {{GENERATED_AT}}.
       </p>
+
+      <!-- AI-generated -->
+      <div class="search">
+        <label for="country-search">Search by country name</label>
+        <input
+          id="country-search"
+          type="search"
+          placeholder="e.g. Norway"
+          autocomplete="off"
+        />
+        <p id="search-status" class="search-status" aria-live="polite"></p>
+      </div>
+
       {{TABLE}}
     </main>
+    <script>
+{{SEARCH_SCRIPT}}
+    </script>
   </body>
 </html>

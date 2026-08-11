@@ -32,7 +32,7 @@ function buildTable(countries) {
 
       return `<tr>
   <td>${flagCell}</td>
-  <td>${escapeHtml(country.name)}</td>
+  <td class="country-name">${escapeHtml(country.name)}</td>
   <td>${capital}</td>
   <td class="num">${escapeHtml(country.population.toLocaleString('en-US'))}</td>
   <td>${languages === 'N/A' ? '<span class="empty">N/A</span>' : escapeHtml(languages)}</td>
@@ -42,7 +42,7 @@ function buildTable(countries) {
     .join('\n');
 
   return `<div class="table-wrap">
-<table>
+<table id="countries-table">
   <thead>
     <tr>
       <th>Flag</th>
@@ -67,6 +67,10 @@ export function generateHtml(countries) {
     'utf8',
   );
   const styles = fs.readFileSync(path.join(__dirname, 'styles.css'), 'utf8');
+  const searchScript = fs.readFileSync(
+    path.join(__dirname, 'search.js'),
+    'utf8',
+  );
 
   return template
     .replace('{{STYLES}}', styles)
@@ -80,7 +84,8 @@ export function generateHtml(countries) {
         }),
       ),
     )
-    .replace('{{TABLE}}', buildTable(countries));
+    .replace('{{TABLE}}', buildTable(countries))
+    .replace('{{SEARCH_SCRIPT}}', searchScript);
 }
 
 // AI-generated
