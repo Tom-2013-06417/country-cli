@@ -93,7 +93,15 @@ node index.js
 npm start
 ```
 
-On success you should see a summary like `Fetched N countries. Files written to ./output.`, and these files:
+Optional: filter European countries by **sub-region** (bonus):
+
+```bash
+node index.js --region "Northern Europe"
+```
+
+If `--region` is missing a value, or the sub-region does not match any countries, the script prints an error and exits with code `1`.
+
+On success you should see a summary like `Fetched N countries (Europe). Files written to ./output.`, and these files:
 
 - `output/countries.html`
 - `output/countries.csv`
