@@ -39,5 +39,8 @@ export function transformCountries(apiResponse) {
     ? apiResponse
     : (apiResponse?.data?.objects ?? []);
 
-  return countries.map(transformCountry);
+  return countries
+    .map(transformCountry)
+    // AI-generated
+    .sort((a, b) => a.name.localeCompare(b.name));
 }
