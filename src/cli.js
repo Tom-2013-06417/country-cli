@@ -1,5 +1,4 @@
-import { fetchCountries } from './api/index.js';
-import { transformCountries } from './transformers/index.js';
+import { fetchCountries, transformCountries } from './api/country/index.js';
 
 const response = await fetchCountries({ query: { region: 'Europe' } });
 const countries = transformCountries(response);

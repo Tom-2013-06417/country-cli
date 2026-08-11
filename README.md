@@ -40,11 +40,21 @@ npm start
 ## Project layout
 
 ```text
-index.js              Entry point
+index.js                 Entry point (`node index.js`)
 src/
-  cli.js              Orchestration
-  config.js           Env / paths
-  api/                API fetching
-  transformers/       Data processing
-  generators/         HTML and CSV output
+  cli.js                 Orchestrates fetch → transform → generate
+  config.js              App settings derived from environment variables
+  utils/                 Shared helpers (e.g. loading `.env`)
+  api/
+    index.js             Re-exports resource modules
+    [resource]/           One folder per external API resource
+      fetch.js           HTTP calls to that resource (URL, headers, errors)
+      transform.js       Maps raw API payloads into a stable app shape
+      index.js           Barrel file (re-exports fetch + transform)
+  generators/
+    html.js              Builds the HTML report
+    csv.js               Builds the CSV report
+    index.js             Barrel file for generators
 ```
+
+Add a new API resource by creating another `[resource]/` folder with the same three files; keep output formatting in `generators/`.
