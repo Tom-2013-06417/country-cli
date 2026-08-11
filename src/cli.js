@@ -1,11 +1,16 @@
 import { fetchCountries, transformCountries } from './api/country/index.js';
 import { writeHtml, writeCSV } from './generators/index.js';
 
-const response = await fetchCountries({ query: { region: 'Europe' } });
-const countries = transformCountries(response);
+export async function run() {
+  const outputDir = process.env.OUTPUT_DIR || './output';
 
-const htmlPath = await writeHtml(countries, process.env.OUTPUT_DIR);
-console.log(`Wrote ${htmlPath}`);
+  const response = await fetchCountries({ query: { region: 'Europe' } });
+  const countries = transformCountries(response);
 
-const csvPath = await writeCSV(countries, process.env.OUTPUT_DIR);
-console.log(`Wrote ${csvPath}`);
+  await writeHtml(countries, outputDir);
+  await writeCSV(countries, outputDir);
+
+  console.log(
+    `Fetched ${countries.length} countries. Files written to ${outputDir}.`,
+  );
+}
