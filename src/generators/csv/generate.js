@@ -32,7 +32,7 @@ function buildTable(countries) {
     .join(',');
 
   const rows = countries.map((country) => {
-    const capital = country.capital ?? 'N/A';
+    const capital = country.capital ?? '—';
     const languages = formatLanguages(country.languages) || '—';
     const currencies = formatCurrencies(country.currencies) || '—';
 
